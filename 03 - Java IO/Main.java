@@ -114,7 +114,7 @@ public class Main {
             FileReader f2 = new FileReader(fileName);
             BufferedReader f = new BufferedReader(f2);
 
-            while ((c = f1.read()) != -1){
+            while ((c = f.read()) != -1){
                 System.out.print((char) c);
             }
             f2.close();
