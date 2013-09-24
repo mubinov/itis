@@ -142,6 +142,34 @@ public class Main {
         }
     }
 
+    public static void realAccess(String fileName){
+        try{
+            /*
+            r - read
+            rw - read/write
+            rws - read/write synchronize content/metadata
+            rwd - read/write synchronize content
+             */
+            RandomAccessFile f = new RandomAccessFile(fileName, "rwd");
+            String str;
+
+            while((str = f.readLine()) != null){
+                System.out.println(str);
+            }
+
+            System.out.println(f.getFilePointer());
+
+            f.seek(6);
+            f.writeBytes("ITIS");
+            f.close();
+
+
+        }catch (IOException e){
+            System.out.println("Some I/O error");
+        }
+
+    }
+
     public static void main(String[] args) {
         //showInfo("D:/Test");
         //showInfo("D:/Test/example.txt");
@@ -151,6 +179,7 @@ public class Main {
         //bufferedIO("D:/Test/m");
         //fileReaderDemo("D:/Test/example.txt");
         //fileWriterDemo("D:/Test/examplem.txt", "Hello World!\n");
+        //realAccess("D:/Test/examplem.txt");
     }
 
 }
